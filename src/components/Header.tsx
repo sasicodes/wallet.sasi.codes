@@ -70,7 +70,7 @@ const Header = () => {
           </span>
         </div>
       </div>
-      <div className="flex items-center pt-2 space-x-4">
+      <div className="flex items-center space-x-4">
         <NetworkSelect />
         <Tooltip placement="bottom" content="Source Code">
           <a
