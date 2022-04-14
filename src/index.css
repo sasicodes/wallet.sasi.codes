@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans min-h-screen bg-gradient-to-br to-[#111e2f] from-[#080e1c] via-[#182a43] overflow-x-hidden text-gray-200;
+}
