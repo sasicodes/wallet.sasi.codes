@@ -1,5 +1,5 @@
 import { Chain, ChainName } from './types'
-export const INFURA_ID = '95ff362df12840c98fa418bcd4b27c8a'
+export const INFURA_ID = '6924ef8bbfd54acabaee0eb521421d76'
 
 /**
  * Data from Chainlist
@@ -210,24 +210,6 @@ export const chain: Record<ChainName, Chain> = {
 }
 
 export const allChains: Chain[] = Object.values(chain)
-
-export const defaultChains: Chain[] = [
-  chain.mainnet,
-  chain.ropsten,
-  chain.rinkeby,
-  chain.goerli,
-  chain.kovan
-]
-
-export const defaultL2Chains: Chain[] = [
-  chain.gnosis,
-  chain.optimism,
-  chain.optimismKovan,
-  chain.polygonMainnet,
-  chain.polygonTestnetMumbai,
-  chain.arbitrumOne,
-  chain.arbitrumRinkeby
-]
 
 export const getCurrentChainInfo = (chainId: number): Chain => {
   allChains.forEach((n) => {
