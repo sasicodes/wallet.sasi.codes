@@ -19,8 +19,10 @@ export default function Transact() {
   }
 
   const sendTransaction = async () => {
-    setLoading(true)
+    if (!sendForm.address.length || !sendForm.amount.length)
+      return toast.error('Fill out all fields.')
     try {
+      setLoading(true)
       let transaction = {
         to: sendForm.address,
         value: ethers.utils.parseEther(sendForm.amount.toString()),

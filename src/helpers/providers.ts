@@ -132,7 +132,7 @@ export const chain: Record<ChainName, Chain> = {
   },
   polygonTestnetMumbai: {
     id: 80_001,
-    name: 'Mumbai',
+    name: 'Polygon Mumbai',
     nativeCurrency: {
       name: 'MATIC',
       symbol: 'MATIC',
@@ -213,7 +213,7 @@ export const allChains: Chain[] = Object.values(chain)
 
 export const getCurrentChainInfo = (chainId: number): Chain => {
   allChains.forEach((n) => {
-    return n.id === chainId
+    if (n.id === chainId) return n
   })
   return chain.mainnet
 }
