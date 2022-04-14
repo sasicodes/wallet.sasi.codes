@@ -17,7 +17,7 @@ const Secrets = () => {
   }
 
   return (
-    <div className="p-4 my-10 space-y-4 bg-gray-900 rounded-lg">
+    <div className="p-4 my-10 space-y-4 bg-gray-900 rounded-xl">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">Private Key</h1>
         <button

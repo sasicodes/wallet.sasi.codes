@@ -7,3 +7,15 @@
 body {
   @apply font-sans min-h-screen bg-gradient-to-br to-[#111e2f] from-[#080e1c] via-[#182a43] overflow-x-hidden text-gray-200;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

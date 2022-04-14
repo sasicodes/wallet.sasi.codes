@@ -1,7 +1,8 @@
 import { configurePersist } from 'zustand-persist'
 import create from 'zustand'
-import { WalletData } from '../helpers/types'
+import { Chain, WalletData } from '../helpers/types'
 import { ethers } from 'ethers'
+import { getCurrentChainInfo } from '../helpers/providers'
 
 const { persist } = configurePersist({
   storage: localStorage
@@ -11,6 +12,8 @@ export interface ContextType {
   generateNewWallet: () => WalletData
   selectedAccount: WalletData | null
   setSelectedAccount: (wallet: WalletData) => void
+  selectedNetwork: Chain
+  setSelectedNetwork: (chain: Chain) => void
 }
 
 const useStore = create<ContextType>(
@@ -19,7 +22,11 @@ const useStore = create<ContextType>(
       key: 'data'
     },
     (set) => ({
+      selectedNetwork: getCurrentChainInfo(1),
       selectedAccount: null,
+      setSelectedNetwork: (chain) => {
+        set({ selectedNetwork: chain })
+      },
       generateNewWallet: () => {
         const entropy = ethers.utils.randomBytes(32)
         // This will generate a random 24 word mnemonic phrase
