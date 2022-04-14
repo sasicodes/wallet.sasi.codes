@@ -39,7 +39,10 @@ const Header = () => {
     <div className="flex items-start justify-between">
       <div>
         <div className="flex items-center space-x-4">
-          <button onClick={() => setShowBlockie((b) => !b)}>
+          <button
+            className="hidden md:block"
+            onClick={() => setShowBlockie((b) => !b)}
+          >
             {showBlockie ? (
               <img
                 src={`https://stamp.fyi/avatar/${selectedAccount.address}`}
@@ -76,7 +79,7 @@ const Header = () => {
           <a
             title="Source Code"
             href="https://github.com/sasicodes/wallet.sasi.codes"
-            className="flex items-center"
+            className="items-center hidden md:flex"
             target="_blank"
             rel="noreferrer"
           >
