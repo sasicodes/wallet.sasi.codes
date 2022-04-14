@@ -1,5 +1,5 @@
 import { Chain, ChainName } from './types'
-export const INFURA_ID = process.env.INFURA_ID
+export const INFURA_ID = '6924ef8bbfd54acabaee0eb521421d76'
 
 /**
  * Data from Chainlist
