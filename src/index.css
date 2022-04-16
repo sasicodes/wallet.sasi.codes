@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
 body {
   @apply font-sans min-h-screen bg-gradient-to-br to-[#111e2f] from-[#080e1c] via-[#182a43] overflow-x-hidden text-gray-200;
 }
