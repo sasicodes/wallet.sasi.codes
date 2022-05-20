@@ -8,9 +8,9 @@ const Secrets = () => {
   const [reveal, setReveal] = useState(false)
   const { selectedAccount } = useStore()
 
-  const getPrivateKey = () => {
+  const getPrivateKey = (isCopy?: boolean) => {
     let pk = selectedAccount?.privateKey || ''
-    if (reveal) {
+    if (reveal || isCopy) {
       return pk
     }
     return pk.replaceAll(/./g, '• ')
@@ -35,7 +35,7 @@ const Secrets = () => {
       <div>
         <CopyToClipboard
           onCopy={() => toast.success('Private key copied 🎉')}
-          text={getPrivateKey()}
+          text={getPrivateKey(true)}
         >
           <button className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all">
             {getPrivateKey()}
