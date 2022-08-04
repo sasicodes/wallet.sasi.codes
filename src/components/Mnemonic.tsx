@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { Eye, EyeOff } from 'react-feather'
 import toast from 'react-hot-toast'
 import useStore from '../store/useStore'
 
-const Secrets = () => {
+const Mnemonic = () => {
   const [reveal, setReveal] = useState(false)
   const { selectedAccount } = useStore()
 
-  const getPrivateKey = (isCopy?: boolean) => {
-    let pk = selectedAccount?.privateKey || ''
+  const getMnemonic = (isCopy?: boolean) => {
+    let mn = selectedAccount?.mnemonic || ''
     if (reveal || isCopy) {
-      return pk
+      return mn
     }
-    return pk.replaceAll(/./g, '• ')
+    return mn.replaceAll(/./g, '• ')
   }
 
   return (
     <div className="p-4 my-10 space-y-4 bg-gray-900 rounded-xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-medium">Private Key</h1>
+        <h1 className="text-xl font-medium">Mnemonic Phrase</h1>
         <button
           onClick={() => setReveal((b) => !b)}
           className="inline-flex items-center space-x-1.5 text-sm hover:opacity-70"
@@ -34,11 +34,11 @@ const Secrets = () => {
       </div>
       <div>
         <CopyToClipboard
-          onCopy={() => toast.success('Private key copied 🎉')}
-          text={getPrivateKey(true)}
+          onCopy={() => toast.success('Mnemonic copied 🎉')}
+          text={getMnemonic(true)}
         >
           <button className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all">
-            {getPrivateKey()}
+            {getMnemonic()}
           </button>
         </CopyToClipboard>
       </div>
@@ -46,4 +46,4 @@ const Secrets = () => {
   )
 }
 
-export default Secrets
+export default Mnemonic

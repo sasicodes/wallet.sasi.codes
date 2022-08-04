@@ -34,7 +34,8 @@ const useStore = create<ContextType>(
         let randomWallet = ethers.Wallet.fromMnemonic(mnemonicPhrase)
         const wallet: WalletData = {
           address: randomWallet.address,
-          privateKey: randomWallet.privateKey
+          privateKey: randomWallet.privateKey,
+          mnemonic: mnemonicPhrase
         }
         set(() => ({
           selectedAccount: wallet

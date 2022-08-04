@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import RegenerateWallet from './components/RegenerateWallet'
-import Secrets from './components/Secrets'
+import PrivateKey from './components/PrivateKey'
+import Mnemonic from './components/Mnemonic'
 import Transact from './components/Transact'
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div>
       <Header />
       <Transact />
-      <Secrets />
+      <PrivateKey />
+      <Mnemonic />
       <RegenerateWallet />
     </div>
   )
