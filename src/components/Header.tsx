@@ -1,6 +1,5 @@
 import Davatar from '@davatar/react'
 import { useEffect, useState } from 'react'
-import CopyToClipboard from 'react-copy-to-clipboard'
 import toast from 'react-hot-toast'
 import { shortenAddress } from '../helpers/shorten'
 import useStore from '../store/useStore'
@@ -8,19 +7,21 @@ import { GitHub } from 'react-feather'
 import Tooltip from './Tooltip'
 import { ethers } from 'ethers'
 import NetworkSelect from './NetworkSelect'
+import { useCopyToClipboard } from '../helpers/useCopyToClipboard'
 
 const Header = () => {
   const { generateNewWallet, selectedAccount, selectedNetwork } = useStore()
   const [showBlockie, setShowBlockie] = useState(true)
   const [burnerBalance, setBurnerBalance] = useState('0')
+  const [copy] = useCopyToClipboard()
 
-  const provider = new ethers.providers.JsonRpcProvider(
+  const provider = new ethers.JsonRpcProvider(
     selectedNetwork?.rpcUrls[0]
   )
 
   const getBalance = async () => {
     const data = await provider.getBalance(selectedAccount?.address || '')
-    setBurnerBalance(ethers.utils.formatUnits(data))
+    setBurnerBalance(ethers.formatUnits(data))
   }
 
   useEffect(() => {
@@ -59,13 +60,13 @@ const Header = () => {
             )}
           </button>
           <span className="flex flex-col items-start">
-            <button className="text-2xl outline-none">
-              <CopyToClipboard
-                text={selectedAccount.address}
-                onCopy={() => toast.success('Address copied 🎉')}
-              >
-                <span>{shortenAddress(selectedAccount.address)}</span>
-              </CopyToClipboard>
+            <button className="text-2xl outline-none"
+              onClick={async () => {
+                await copy(selectedAccount.address)
+                toast.success('Address copied 🎉')
+              }}
+            >
+              <span>{shortenAddress(selectedAccount.address)}</span>
             </button>
             <span className="h-4 text-xs bg-gray-900 rounded-full">
               {burnerBalance} {selectedNetwork?.nativeCurrency?.symbol}

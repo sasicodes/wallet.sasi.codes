@@ -11,7 +11,7 @@ export default function Transact() {
   const [loading, setLoading] = useState(false)
   const { selectedAccount, selectedNetwork } = useStore()
 
-  const provider = new ethers.providers.JsonRpcProvider(
+  const provider = new ethers.JsonRpcProvider(
     selectedNetwork?.rpcUrls[0]
   )
   if (!selectedAccount) {
@@ -23,25 +23,18 @@ export default function Transact() {
       return toast.error('Fill out all fields.')
     try {
       setLoading(true)
-      let transaction = {
-        to: sendForm.address,
-        value: ethers.utils.parseEther(sendForm.amount.toString()),
-        gasLimit: '21000',
-        maxPriorityFeePerGas: ethers.utils.parseUnits('5', 'gwei'),
-        maxFeePerGas: ethers.utils.parseUnits('20', 'gwei'),
-        nonce: provider.getTransactionCount(selectedAccount.address, 'latest'),
-        type: 2,
-        chainId: selectedNetwork?.id
-      }
       const signer = new ethers.Wallet(selectedAccount.privateKey, provider)
-      const receipt = await signer.sendTransaction(transaction)
+      const receipt = await signer.sendTransaction({
+        to: sendForm.address,
+        value: ethers.parseEther(sendForm.amount.toString()),
+        chainId: BigInt(selectedNetwork?.id),
+      })
       setLoading(false)
       console.log('TXN SUCCESS ->>>>> ', receipt)
       console.log(
         'VIEW IN EXPLORER ->>>>> ',
-        `${
-          selectedNetwork.blockExplorers &&
-          selectedNetwork.blockExplorers[0]?.url
+        `${selectedNetwork.blockExplorers &&
+        selectedNetwork.blockExplorers[0]?.url
         }/${receipt.hash}`
       )
       toast.success('Done 🎉, check console for transaction details.')

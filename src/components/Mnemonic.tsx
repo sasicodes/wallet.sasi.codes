@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import CopyToClipboard from 'react-copy-to-clipboard'
 import { Eye, EyeOff } from 'react-feather'
 import toast from 'react-hot-toast'
 import useStore from '../store/useStore'
+import { useCopyToClipboard } from '../helpers/useCopyToClipboard'
 
 const Mnemonic = () => {
   const [reveal, setReveal] = useState(false)
   const { selectedAccount } = useStore()
+  const [copy] = useCopyToClipboard()
 
   const getMnemonic = (isCopy?: boolean) => {
     let mn = selectedAccount?.mnemonic || ''
@@ -33,14 +34,14 @@ const Mnemonic = () => {
         </button>
       </div>
       <div>
-        <CopyToClipboard
-          onCopy={() => toast.success('Mnemonic copied 🎉')}
-          text={getMnemonic(true)}
-        >
-          <button className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all">
-            {getMnemonic()}
-          </button>
-        </CopyToClipboard>
+        <button
+          onClick={async () => {
+            await copy(getMnemonic(true))
+            toast.success('Mnemonic copied 🎉')
+          }}
+          className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all">
+          {getMnemonic()}
+        </button>
       </div>
     </div>
   )
