@@ -1,4 +1,3 @@
-import React from 'react'
 import { RefreshCcw } from 'react-feather'
 import useStore from '../store/useStore'
 
