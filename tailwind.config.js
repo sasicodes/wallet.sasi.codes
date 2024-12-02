@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Quicksand', 'system-ui'],
+        sans: ['Inter', 'system-ui'],
       }
     }
   },

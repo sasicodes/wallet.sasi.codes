@@ -23,7 +23,7 @@ const Header = () => {
 
   useEffect(() => {
     getBalance()
-  }, [selectedNetwork])
+  }, [selectedAccount])
 
   useEffect(() => {
     if (!selectedAccount) generateNewWallet()
@@ -45,7 +45,7 @@ const Header = () => {
             {showBlockie ? (
               <img
                 src={`https://stamp.fyi/avatar/${selectedAccount.address}`}
-                className="rounded-full w-9 h-9"
+                className="rounded-full size-12"
                 draggable={false}
                 alt=""
               />
@@ -68,7 +68,7 @@ const Header = () => {
             >
               <span>{shortenAddress(selectedAccount.address)}</span>
             </button>
-            <span className="h-4 text-xs bg-gray-900 rounded-full">
+            <span className="text-xs bg-gray-300 px-2 py-0.5 rounded-full">
               {burnerBalance} {selectedNetwork?.nativeCurrency?.symbol}
             </span>
           </span>

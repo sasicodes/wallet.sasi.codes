@@ -8,7 +8,7 @@ const QRCode = ({ address }: Props) => {
   return (
     <QRCodeCanvas
       level={'H'}
-      style={{ padding: 5, backgroundColor: '#fff', borderRadius: 10 }}
+      style={{ padding: 5, backgroundColor: '#fff' }}
       value={`ethereum:${address}`}
       size={150}
       imageSettings={{

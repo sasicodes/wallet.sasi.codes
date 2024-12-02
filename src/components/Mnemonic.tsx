@@ -18,9 +18,9 @@ const Mnemonic = () => {
   }
 
   return (
-    <div className="p-4 my-10 space-y-4 bg-gray-900 rounded-xl">
+    <div className="px-4 py-5 my-10 space-y-4 bg-white rounded-xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-medium">Mnemonic Phrase</h1>
+        <h1 className="text-xl">Mnemonic Phrase</h1>
         <button
           type="button"
           onClick={() => setReveal((b) => !b)}
@@ -41,7 +41,7 @@ const Mnemonic = () => {
             await copy(getMnemonic(true))
             toast.success('Mnemonic copied 🎉')
           }}
-          className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all"
+          className="w-full px-4 py-2 tracking-wide text-left line-clamp-2 bg-gray-100 rounded-lg outline-none"
         >
           {getMnemonic()}
         </button>

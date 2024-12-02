@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply font-sans min-h-screen bg-gradient-to-br to-[#111e2f] from-[#080e1c] via-[#182a43] overflow-x-hidden text-gray-200;
+  @apply font-sans min-h-screen bg-gradient-to-br to-[#ffffff] from-[#ffffff] via-[#f9e8e2] overflow-x-hidden text-black;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -20,6 +20,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }

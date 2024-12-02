@@ -1,4 +1,4 @@
-import { Tab } from '@headlessui/react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
 import useStore from '../store/useStore'
 import QRCode from './QrCode'
@@ -44,13 +44,13 @@ export default function Transact() {
 
   return (
     <div className="w-full my-10 sm:px-0">
-      <Tab.Group>
-        <Tab.List className="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
+      <TabGroup>
+        <TabList className="flex p-1 space-x-1 bg-white rounded-xl">
           <Tab
             className={({ selected }) =>
               clsx(
-                'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 font-medium text-white rounded-lg focus:outline-none',
-                selected ? 'bg-gray-900' : 'hover:bg-gray-900'
+                'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 text-black rounded-lg focus:outline-none',
+                selected ? 'bg-gray-100' : 'hover:bg-gray-100'
               )
             }
           >
@@ -59,17 +59,17 @@ export default function Transact() {
           <Tab
             className={({ selected }) =>
               clsx(
-                'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 font-medium text-white rounded-lg focus:outline-none',
-                selected ? 'bg-gray-900' : 'hover:bg-gray-900'
+                'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 text-black rounded-lg focus:outline-none',
+                selected ? 'bg-gray-100' : 'hover:bg-gray-100'
               )
             }
           >
             Receive
           </Tab>
-        </Tab.List>
-        <Tab.Panels className="mt-2">
-          <Tab.Panel
-            className={clsx('bg-gray-900 rounded-xl p-3 focus:outline-none')}
+        </TabList>
+        <TabPanels className="mt-2 h-56">
+          <TabPanel
+            className={clsx('bg-white rounded-xl p-3 focus:outline-none')}
           >
             <div className="p-1 space-y-4">
               <div className="flex flex-col">
@@ -88,7 +88,7 @@ export default function Transact() {
                       address: e.target.value
                     })
                   }
-                  className="px-4 py-2 bg-gray-800 rounded-lg focus:outline-none"
+                  className="px-4 py-2 bg-gray-100 rounded-lg focus:outline-none"
                   type="text"
                   id="address"
                   placeholder="0x..."
@@ -111,7 +111,7 @@ export default function Transact() {
                     })
                   }
                   placeholder="0.0"
-                  className="px-4 py-2 tracking-wider bg-gray-800 rounded-lg focus:outline-none"
+                  className="px-4 py-2 tracking-wider bg-gray-100 rounded-lg focus:outline-none"
                   type="number"
                   id="amount"
                 />
@@ -120,23 +120,23 @@ export default function Transact() {
                 <button
                   type="button"
                   disabled={loading}
-                  className="px-3 py-1 text-sm bg-gray-800 rounded hover:bg-black"
+                  className="px-5 py-1.5 rounded-lg hover:bg-gray-900 text-white bg-black"
                   onClick={() => sendTransaction()}
                 >
                   {loading ? 'Loading...' : 'Send'}
                 </button>
               </div>
             </div>
-          </Tab.Panel>
-          <Tab.Panel
-            className={clsx('bg-gray-900 rounded-xl p-3 focus:outline-none')}
+          </TabPanel>
+          <TabPanel
+            className={clsx('bg-white rounded-xl p-3 focus:outline-none')}
           >
-            <div className="flex justify-center p-5">
+            <div className="flex justify-center p-6">
               <QRCode address={selectedAccount.address} />
             </div>
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+          </TabPanel>
+        </TabPanels>
+      </TabGroup>
     </div>
   )
 }

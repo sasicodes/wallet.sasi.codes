@@ -18,9 +18,9 @@ const PrivateKey = () => {
   }
 
   return (
-    <div className="p-4 my-10 space-y-4 bg-gray-900 rounded-xl">
+    <div className="px-4 py-5 my-10 space-y-4 bg-white rounded-xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-medium">Private Key</h1>
+        <h1 className="text-xl">Private Key</h1>
         <button
           type="button"
           onClick={() => setReveal((b) => !b)}
@@ -41,7 +41,7 @@ const PrivateKey = () => {
             await copy(getPrivateKey(true))
             toast.success('Private key copied 🎉')
           }}
-          className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all"
+          className="w-full px-4 py-2 tracking-wide break-all text-left line-clamp-2 bg-gray-100 rounded-lg outline-none"
         >
           {getPrivateKey()}
         </button>
