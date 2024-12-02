@@ -18,7 +18,7 @@ const Mnemonic = () => {
   }
 
   return (
-    <div className="px-4 py-5 my-10 space-y-4 bg-white rounded-xl">
+    <div className="px-4 py-5 space-y-4 bg-white rounded-xl">
       <div className="flex items-center justify-between">
         <h1 className="text-xl">Mnemonic Phrase</h1>
         <button

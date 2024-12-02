@@ -18,7 +18,7 @@ const PrivateKey = () => {
   }
 
   return (
-    <div className="px-4 py-5 my-10 space-y-4 bg-white rounded-xl">
+    <div className="px-4 py-5 my-2   space-y-4 bg-white rounded-xl">
       <div className="flex items-center justify-between">
         <h1 className="text-xl">Private Key</h1>
         <button
