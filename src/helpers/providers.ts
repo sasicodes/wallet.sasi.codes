@@ -9,7 +9,11 @@ export const chain: Record<ChainName, Chain> = {
     id: 1,
     name: 'Mainnet',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    rpcUrls: ['https://rpc.ankr.com/eth'],
+    rpcUrls: [
+      'https://rpc.ankr.com/eth',
+      'https://eth.llamarpc.com',
+      'https://1rpc.io/eth'
+    ],
     blockExplorers: [
       {
         name: 'Etherscan',
@@ -17,15 +21,19 @@ export const chain: Record<ChainName, Chain> = {
       }
     ]
   },
-  optimism: {
-    id: 10,
-    name: 'Optimism',
-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    rpcUrls: ['https://mainnet.optimism.io'],
+  polygonMainnet: {
+    id: 137,
+    name: 'Polygon Mainnet',
+    nativeCurrency: { name: 'Polygon', symbol: 'POL', decimals: 18 },
+    rpcUrls: [
+      'https://polygon.llamarpc.com',
+      'https://1rpc.io/matic',
+      'https://rpc.ankr.com/polygon'
+    ],
     blockExplorers: [
       {
-        name: 'Etherscan',
-        url: 'https://optimistic.etherscan.io'
+        name: 'Polygonscan',
+        url: 'https://polygonscan.com'
       }
     ]
   },
@@ -33,30 +41,15 @@ export const chain: Record<ChainName, Chain> = {
     id: 8453,
     name: 'Base',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    rpcUrls: ['https://rpc.ankr.com/base'],
+    rpcUrls: [
+      'https://rpc.ankr.com/base',
+      'https://base.llamarpc.com',
+      'https://1rpc.io/base'
+    ],
     blockExplorers: [
       {
         name: 'Basescan',
         url: 'https://basescan.org'
-      }
-    ]
-  },
-  polygonMainnet: {
-    id: 137,
-    name: 'Polygon Mainnet',
-    nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
-    rpcUrls: [
-      'https://polygon-rpc.com',
-      'https://rpc-mainnet.matic.network',
-      'https://matic-mainnet.chainstacklabs.com',
-      'https://rpc-mainnet.maticvigil.com',
-      'https://rpc-mainnet.matic.quiknode.pro',
-      'https://matic-mainnet-full-rpc.bwarelabs.com'
-    ],
-    blockExplorers: [
-      {
-        name: 'Polygonscan',
-        url: 'https://polygonscan.com'
       }
     ]
   }

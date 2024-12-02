@@ -68,7 +68,7 @@ const Header = () => {
             >
               <span>{shortenAddress(selectedAccount.address)}</span>
             </button>
-            <span className="text-xs bg-gray-300 px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-white px-2 py-0.5 rounded-full">
               {burnerBalance} {selectedNetwork?.nativeCurrency?.symbol}
             </span>
           </span>

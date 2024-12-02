@@ -50,7 +50,7 @@ export default function Transact() {
             className={({ selected }) =>
               clsx(
                 'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 text-black rounded-lg focus:outline-none',
-                selected ? 'bg-gray-100' : 'hover:bg-gray-100'
+                selected ? 'bg-gray-100 font-medium' : 'hover:bg-gray-100'
               )
             }
           >
@@ -60,7 +60,7 @@ export default function Transact() {
             className={({ selected }) =>
               clsx(
                 'w-full py-2.5 duration-200 transition ease-in text-sm leading-5 text-black rounded-lg focus:outline-none',
-                selected ? 'bg-gray-100' : 'hover:bg-gray-100'
+                selected ? 'bg-gray-100 font-medium' : 'hover:bg-gray-100'
               )
             }
           >

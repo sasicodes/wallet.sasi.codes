@@ -26,4 +26,4 @@ export type Chain = {
   testnet?: boolean
 }
 
-export type ChainName = 'base' | 'mainnet' | 'optimism' | 'polygonMainnet'
+export type ChainName = 'base' | 'mainnet' | 'polygonMainnet'
