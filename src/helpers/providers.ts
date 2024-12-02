@@ -17,18 +17,6 @@ export const chain: Record<ChainName, Chain> = {
       }
     ]
   },
-  gnosis: {
-    id: 100,
-    name: 'Gnosis Chain',
-    nativeCurrency: { name: 'xDai', symbol: 'xDAI', decimals: 18 },
-    rpcUrls: ['https://rpc.gnosischain.com'],
-    blockExplorers: [
-      {
-        name: 'Blockscout',
-        url: 'https://blockscout.com'
-      }
-    ]
-  },
   optimism: {
     id: 10,
     name: 'Optimism',
@@ -71,39 +59,6 @@ export const chain: Record<ChainName, Chain> = {
         url: 'https://polygonscan.com'
       }
     ]
-  },
-  polygonTestnetMumbai: {
-    id: 80_001,
-    name: 'Polygon Mumbai',
-    nativeCurrency: {
-      name: 'MATIC',
-      symbol: 'MATIC',
-      decimals: 18
-    },
-    rpcUrls: [
-      'https://matic-mumbai.chainstacklabs.com',
-      'https://rpc-mumbai.maticvigil.com',
-      'https://matic-testnet-archive-rpc.bwarelabs.com'
-    ],
-    blockExplorers: [
-      {
-        name: 'Polygonscan',
-        url: 'https://mumbai.polygonscan.com'
-      }
-    ],
-    testnet: true
-  },
-  avalanche: {
-    id: 43_114,
-    name: 'Avalanche Mainnet',
-    nativeCurrency: {
-      name: 'Avalanche',
-      symbol: 'AVAX',
-      decimals: 18
-    },
-    rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
-    blockExplorers: [{ name: 'SnowTrace', url: 'https://snowtrace.io' }],
-    testnet: false
   }
 }
 
