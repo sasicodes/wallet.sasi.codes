@@ -1,4 +1,4 @@
-import { Chain, ChainName } from './types'
+import type { Chain, ChainName } from './types'
 
 /**
  * Data from Chainlist
@@ -9,7 +9,7 @@ export const chain: Record<ChainName, Chain> = {
     id: 1,
     name: 'Mainnet',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    rpcUrls: [`https://rpc.ankr.com/eth`],
+    rpcUrls: ['https://rpc.ankr.com/eth'],
     blockExplorers: [
       {
         name: 'Etherscan',
@@ -110,8 +110,8 @@ export const chain: Record<ChainName, Chain> = {
 export const allChains: Chain[] = Object.values(chain)
 
 export const getCurrentChainInfo = (chainId: number): Chain => {
-  allChains.forEach((n) => {
+  for (const n of allChains) {
     if (n.id === chainId) return n
-  })
+  }
   return chain.mainnet
 }

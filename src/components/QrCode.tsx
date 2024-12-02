@@ -1,4 +1,4 @@
-import QR from 'qrcode.react'
+import { QRCodeCanvas } from 'qrcode.react'
 
 type Props = {
   address: string
@@ -6,7 +6,7 @@ type Props = {
 
 const QRCode = ({ address }: Props) => {
   return (
-    <QR
+    <QRCodeCanvas
       level={'H'}
       style={{ padding: 5, backgroundColor: '#fff', borderRadius: 10 }}
       value={`ethereum:${address}`}

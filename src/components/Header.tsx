@@ -4,7 +4,6 @@ import toast from 'react-hot-toast'
 import { shortenAddress } from '../helpers/shorten'
 import useStore from '../store/useStore'
 import { GitHub } from 'react-feather'
-import Tooltip from './Tooltip'
 import { ethers } from 'ethers'
 import NetworkSelect from './NetworkSelect'
 import { useCopyToClipboard } from '../helpers/useCopyToClipboard'
@@ -15,9 +14,7 @@ const Header = () => {
   const [burnerBalance, setBurnerBalance] = useState('0')
   const [copy] = useCopyToClipboard()
 
-  const provider = new ethers.JsonRpcProvider(
-    selectedNetwork?.rpcUrls[0]
-  )
+  const provider = new ethers.JsonRpcProvider(selectedNetwork?.rpcUrls[0])
 
   const getBalance = async () => {
     const data = await provider.getBalance(selectedAccount?.address || '')
@@ -41,6 +38,7 @@ const Header = () => {
       <div>
         <div className="flex items-center space-x-4">
           <button
+            type="button"
             className="hidden md:block"
             onClick={() => setShowBlockie((b) => !b)}
           >
@@ -60,7 +58,9 @@ const Header = () => {
             )}
           </button>
           <span className="flex flex-col items-start">
-            <button className="text-2xl outline-none"
+            <button
+              type="button"
+              className="text-2xl outline-none"
               onClick={async () => {
                 await copy(selectedAccount.address)
                 toast.success('Address copied 🎉')
@@ -76,17 +76,15 @@ const Header = () => {
       </div>
       <div className="flex items-center space-x-4">
         <NetworkSelect />
-        <Tooltip placement="bottom" content="Source Code">
-          <a
-            title="Source Code"
-            href="https://github.com/sasicodes/wallet.sasi.codes"
-            className="items-center hidden md:flex"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <GitHub className="w-4 h-4" />
-          </a>
-        </Tooltip>
+        <a
+          title="Source Code"
+          href="https://github.com/sasicodes/wallet.sasi.codes"
+          className="items-center hidden md:flex"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <GitHub className="w-4 h-4" />
+        </a>
       </div>
     </div>
   )

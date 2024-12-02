@@ -10,7 +10,7 @@ const Mnemonic = () => {
   const [copy] = useCopyToClipboard()
 
   const getMnemonic = (isCopy?: boolean) => {
-    let mn = selectedAccount?.mnemonic || ''
+    const mn = selectedAccount?.mnemonic || ''
     if (reveal || isCopy) {
       return mn
     }
@@ -22,6 +22,7 @@ const Mnemonic = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">Mnemonic Phrase</h1>
         <button
+          type="button"
           onClick={() => setReveal((b) => !b)}
           className="inline-flex items-center space-x-1.5 text-sm hover:opacity-70"
         >
@@ -35,11 +36,13 @@ const Mnemonic = () => {
       </div>
       <div>
         <button
+          type="button"
           onClick={async () => {
             await copy(getMnemonic(true))
             toast.success('Mnemonic copied 🎉')
           }}
-          className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all">
+          className="w-full px-4 py-2 tracking-wide text-left truncate bg-gray-800 rounded-lg outline-none select-all"
+        >
           {getMnemonic()}
         </button>
       </div>

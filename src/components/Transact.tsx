@@ -11,9 +11,7 @@ export default function Transact() {
   const [loading, setLoading] = useState(false)
   const { selectedAccount, selectedNetwork } = useStore()
 
-  const provider = new ethers.JsonRpcProvider(
-    selectedNetwork?.rpcUrls[0]
-  )
+  const provider = new ethers.JsonRpcProvider(selectedNetwork?.rpcUrls[0])
   if (!selectedAccount) {
     return <div className="grid place-items-center">Loading...</div>
   }
@@ -27,19 +25,17 @@ export default function Transact() {
       const receipt = await signer.sendTransaction({
         to: sendForm.address,
         value: ethers.parseEther(sendForm.amount.toString()),
-        chainId: BigInt(selectedNetwork?.id),
+        chainId: BigInt(selectedNetwork?.id)
       })
       setLoading(false)
       console.log('TXN SUCCESS ->>>>> ', receipt)
       console.log(
         'VIEW IN EXPLORER ->>>>> ',
-        `${selectedNetwork.blockExplorers &&
-        selectedNetwork.blockExplorers[0]?.url
-        }/${receipt.hash}`
+        `${selectedNetwork.blockExplorers?.[0]?.url}/${receipt.hash}`
       )
       toast.success('Done 🎉, check console for transaction details.')
       setSendForm({ address: '', amount: '' })
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log('TXN ERROR ->>>>> ', error)
       toast.error('Failed, check console for errors.')
       setLoading(false)
@@ -84,7 +80,6 @@ export default function Transact() {
                   Address
                 </label>
                 <input
-                  autoFocus
                   autoComplete="off"
                   value={sendForm.address}
                   onChange={(e) =>
@@ -123,6 +118,7 @@ export default function Transact() {
               </div>
               <div className="flex justify-end">
                 <button
+                  type="button"
                   disabled={loading}
                   className="px-3 py-1 text-sm bg-gray-800 rounded hover:bg-black"
                   onClick={() => sendTransaction()}
@@ -136,7 +132,7 @@ export default function Transact() {
             className={clsx('bg-gray-900 rounded-xl p-3 focus:outline-none')}
           >
             <div className="flex justify-center p-5">
-              <QRCode address={selectedAccount!.address} />
+              <QRCode address={selectedAccount.address} />
             </div>
           </Tab.Panel>
         </Tab.Panels>

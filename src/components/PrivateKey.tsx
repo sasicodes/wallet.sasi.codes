@@ -10,7 +10,7 @@ const PrivateKey = () => {
   const [copy] = useCopyToClipboard()
 
   const getPrivateKey = (isCopy?: boolean) => {
-    let pk = selectedAccount?.privateKey || ''
+    const pk = selectedAccount?.privateKey || ''
     if (reveal || isCopy) {
       return pk
     }
@@ -22,6 +22,7 @@ const PrivateKey = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-medium">Private Key</h1>
         <button
+          type="button"
           onClick={() => setReveal((b) => !b)}
           className="inline-flex items-center space-x-1.5 text-sm hover:opacity-70"
         >
@@ -35,6 +36,7 @@ const PrivateKey = () => {
       </div>
       <div>
         <button
+          type="button"
           onClick={async () => {
             await copy(getPrivateKey(true))
             toast.success('Private key copied 🎉')

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Chain, WalletData } from '../helpers/types'
+import type { Chain, WalletData } from '../helpers/types'
 import { HDNodeWallet, Mnemonic, randomBytes } from 'ethers'
 import { getCurrentChainInfo } from '../helpers/providers'
 import { persist } from 'zustand/middleware'
@@ -24,7 +24,7 @@ const useStore = create(
         const entropy = randomBytes(32)
         // This will generate a random 24 word mnemonic phrase
         const mnemonicPhrase = Mnemonic.fromEntropy(entropy)
-        let randomWallet = HDNodeWallet.fromMnemonic(mnemonicPhrase)
+        const randomWallet = HDNodeWallet.fromMnemonic(mnemonicPhrase)
         const wallet: WalletData = {
           address: randomWallet.address,
           privateKey: randomWallet.privateKey,
@@ -41,7 +41,7 @@ const useStore = create(
     }),
     {
       name: 'data'
-    },
+    }
   )
 )
 

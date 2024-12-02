@@ -3,7 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { Check, ChevronDown } from 'react-feather'
 import { allChains } from '../helpers/providers'
 import useStore from '../store/useStore'
-import { Chain } from '../helpers/types'
+import type { Chain } from '../helpers/types'
 
 export default function NetworkSelect() {
   const { setSelectedNetwork, selectedNetwork } = useStore()
@@ -31,9 +31,9 @@ export default function NetworkSelect() {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute right-0 py-1 mt-1 overflow-auto bg-gray-900 rounded-lg w-44 focus:outline-none sm:text-sm">
-              {allChains.map((chain, idx) => (
+              {allChains.map((chain) => (
                 <Listbox.Option
-                  key={idx}
+                  key={chain.id}
                   className={({ active }) =>
                     `cursor-default select-none relative py-1 pr-10 pl-3 ${
                       active ? 'bg-gray-800' : 'text-gray-400'

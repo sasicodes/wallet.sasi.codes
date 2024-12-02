@@ -1,5 +1,5 @@
-export const setToLocalStorage = (key: string, value: any) => {
-  let data = typeof value !== 'string' ? JSON.stringify(value) : value
+export const setToLocalStorage = (key: string, value: unknown) => {
+  const data = typeof value !== 'string' ? JSON.stringify(value) : value
   setToStorage(key, data)
 }
 
