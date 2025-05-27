@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply font-sans min-h-screen bg-gradient-to-br to-[#ffffff] from-[#ffffff] via-[#f9e8e2] overflow-x-hidden text-black;
+  @apply font-sans min-h-screen bg-[#f4f3f2] overflow-x-hidden text-black;
 }
 
 /* Chrome, Safari, Edge, Opera */
