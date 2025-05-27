@@ -7,7 +7,7 @@ import type { Chain, ChainName } from './types'
 export const chain: Record<ChainName, Chain> = {
   mainnet: {
     id: 1,
-    name: 'Mainnet',
+    name: 'Ethereum',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     rpcUrls: [
       'https://rpc.ankr.com/eth',
@@ -23,7 +23,7 @@ export const chain: Record<ChainName, Chain> = {
   },
   polygonMainnet: {
     id: 137,
-    name: 'Polygon Mainnet',
+    name: 'Polygon',
     nativeCurrency: { name: 'Polygon', symbol: 'POL', decimals: 18 },
     rpcUrls: [
       'https://polygon.llamarpc.com',
